@@ -1,0 +1,54 @@
+
+int factorial(int n){
+		if(n <= 0){
+			return 1;
+		} else {
+			return n * factorial(n-1);
+		}
+}
+
+int main(){
+	
+	int i, k, j, l;
+	i = factorial(6);
+	printf(i);
+	printf("\n");
+	l = 8;
+	printf(l);
+	printf("\n");
+	i = 4;
+	k = 23;
+	j= i*l;
+	printf(j);
+	printf("\n");
+	j=j/5;
+	printf(j);
+	printf("\n");
+	j=i * l + k * l / 5;
+	printf(j);
+	printf("\n");
+	j = i * l + k * l / 5 - l;
+	l =  i + i + l + k + j + (j*k + l);
+	printf(l);
+	printf("\n");
+	printf(j);
+	printf("\n");
+
+
+		
+	i = 0;
+	l = 0;
+	while(l < 4){
+		
+		for (k = 0; k < 10; k++){
+			if(!(k == 5 || l ) && i > 10)
+				;
+			else
+				i = i + k;							
+		}
+		l = l+1;
+	}
+	printf(i);
+	printf("\n");
+
+}

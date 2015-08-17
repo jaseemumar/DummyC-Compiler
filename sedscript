@@ -1,0 +1,36 @@
+#!/bin/sh
+
+sed -i '/include/a #include "Parserbase.h"' Scanner.ih;
+sed -i '/insert preincludes/a #include "headers.cc"' Parserbase.h;
+sed -i '/include "Parser.h"/a #include "ast_node.cc"' Parser.ih;
+sed -i '/include "Parser.h"/a #include "symbol_table.cc"' Parser.ih;
+#sed -i '/include "Parser.h"/a #include "symbol_table.cc"' Parser.ih;
+#sed -i '/include "Scanner.h"/a #include "ast_declare.cc"' Parser.h 
+
+sed -i '\|STYPE__     d_val__;| d 
+' Parserbase.h
+
+sed -i '\|typedef Meta__::SType STYPE__;| a \\tpublic: static STYPE__  d_val__;
+' Parserbase.h 
+sed -i '\|typedef Meta__::SType STYPE__;| a \\tpublic: static int lineno;
+' Parserbase.h 
+
+sed -i '\|void Parser::print__()| i Meta__::SType ParserBase::d_val__;' parse.cc
+sed -i '\|void Parser::print__()| i int ParserBase::lineno=1;' parse.cc
+#sed -i 's/public:/\0\n\t abstract_astnode * rootNode=NULL;/' Parser.h
+sed -i 's/public:/\0\n\t list<gst_entry*> gst;/' Parser.h
+sed -i 's/public:/\0\n\t list<lst_entry*> *cur_lst;/' Parser.h
+sed -i 's/public:/\0\n\t stack<string> rstack;/' Parser.h
+sed -i 's/public:/\0\n\t stringstream code;/' Parser.h
+#sed -i 's/public:/\0\n\t map<string, int> offset_table;/' Parser.h
+#stores current type
+sed -i 's/public:/\0\n\t string t;/' Parser.h
+sed -i 's/public:/\0\n\t string func_t;/' Parser.h
+sed -i 's/public:/\0\n\t string cur_fun;/' Parser.h
+sed -i 's/public:/\0\n\t unsigned int w;/' Parser.h
+sed -i 's/public:/\0\n\t int o=-4;/' Parser.h
+
+#Observe how the delimiter was changed from / to |
+#-i for inplace update
+# d for delete
+# a for append (or insert)
